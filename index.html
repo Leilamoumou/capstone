@@ -22,16 +22,18 @@
           </button>
           <nav class="main-nav">
             <a href="login.html" class="btn">Login</a>
-            <a href="GEN-Maintenance Check/Maintenance.html" class="btn"
+            <a href="#Emergency-Plumbing" class="btn">Emergency Plumbing</a>
+            <a href="GEN-Maintenance-Check/Maintenance.html" class="btn"
               >General Maintenance Check</a
             >
             <a href="Pricing/pricing.html" class="btn">Pricing</a>
             <a href="Location/Location.html" class="btn">Location</a>
             <a href="FAQ/FAQ.html" class="btn">FAQ</a>
             <a href="#contact" class="btn cta-nav">Contact</a>
-            <!-- needs toggle button for emergency* @Leilamoumou TODO-->
-            <a href="#Emergency-Plumbing" class="btn">Emergency Services</a>
-            <button class="btn theme-toggle" id="themeToggle">Dark Mode</button>
+            <button class="btn theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+              <!-- Dark Mode -->
+               <img src="dark-mode.png" id="themeIcon" alt="Dark Mode Icon" width="30" height="30">
+            </button>
           </nav>
         </div>
       </div>
@@ -49,10 +51,7 @@
           </p>
           <a href="#Emergency-Plumbing">Get your flow fixed here.</a>
         </div>
-        <div
-          class="GEN-Maintenance Check/Maintenance.html"
-          id="Maintenance-Check"
-        >
+        <div class="service-card" id="Maintenance-Check">
           <h3>General Maintenance</h3>
           <p>
             Schedule checkups to ensure your plumbing is running smoothly all
