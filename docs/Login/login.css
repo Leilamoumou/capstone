@@ -164,3 +164,54 @@ body {
   background-color: #ea6c0a;
   color: white;
 }
+/* LOGIN UI DESIGN: */
+.login-section {
+  background-color: #f1f1f1;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+.login-section .container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 460px;
+}
+
+.login-section h2 {
+  color: #006cfa;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+}
+
+.login-section input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.login-section .btn {
+  width: 100%;
+  background-color: #f97316;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-section .btn:hover {
+  background-color: #ea6c0a;
+}

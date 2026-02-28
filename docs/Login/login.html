@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlowFix - Where All Your Problems Flow Away</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../styles.css">
   </head>
 
   <body>
@@ -22,21 +22,68 @@
           </button>
           <nav class="main-nav">
             <a href="login.html" class="btn">Login</a>
-            
-            <a href="GEN-Maintenance-Check/Maintenance.html" class="btn"
-              >General Maintenance Check</a
-            >
-            <a href="Pricing/pricing.html" class="btn">Pricing</a>
-            <a href="Location/Location.html" class="btn">Location</a>
-            <a href="FAQ/FAQ.html" class="btn">FAQ</a>
+            <a href="../GEN-Maintenance-Check/Maintenance.html">General Maintenance Check</a>
+            <a href="../Pricing/pricing.html">Pricing</a>
+            <a href="../Location/Location.html">Location</a>
+            <a href="../FAQ/FAQ.html">FAQ</a>
             <a href="#contact" class="btn cta-nav">Contact</a>
             <!--TODO @leilamoumou, implement emergency button--> 
-            <a href="#Emergency-Plumbing" class="btn">Emergency Services</a>
+            <a href="#Emergency-Plumbing" class="btn btn-emergency">Emergency Help</a>
             <button class="btn theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
-              <!-- Dark Mode -->
-               <img src="dark-mode.png" id="themeIcon" alt="Dark Mode Icon" width="30" height="30">
+              <img src="../dark-mode.png" id="themeIcon" alt="Dark Mode Icon" width="30" height="30">
             </button>
           </nav>
         </div>
       </div>
     </header>
+
+    <main>
+      <section class="login-section">
+        <div class="container">
+          <h2>Login</h2>
+         <form action="" method="POST">
+  <label>Email</label>
+  <input type="email" placeholder="Email" required>
+  <label>Password</label>
+  <input type="password" placeholder="Password" required>
+  <button type="submit" class="btn">Login</button>
+</form>
+        </div>
+      </section>
+    </main>
+
+    <script src="../script.js"></script>
+    <!-- Firebase script for login AUTH-->
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+      import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyD0uyMpZzJRxkX2kUkzp613Zzw4Xc1TKFQ",
+  authDomain: "flowfix-65fd1.firebaseapp.com",
+  projectId: "flowfix-65fd1",
+  storageBucket: "flowfix-65fd1.firebasestorage.app",
+  messagingSenderId: "878384279716",
+  appId: "1:878384279716:web:041715c6ae2aa120b23631",
+  measurementId: "G-HD6H5ET5X0"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+
+      document.querySelector('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.querySelector('input[type="email"]').value;
+        const password = document.querySelector('input[type="password"]').value;
+
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          alert('Login sucessful.');
+          window.location.href = '../index.html';
+        } catch (error) {
+          alert(error.message);
+        }
+      });
+    </script>
+  </body>
+</html>
