@@ -1,1 +1,3 @@
 .env
+flowfix-mobile/.env
+flowfix-mobile/firebaseConfig.js
