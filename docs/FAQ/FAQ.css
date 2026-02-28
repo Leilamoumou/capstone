@@ -26,8 +26,10 @@ body {
 .panel {
   padding: 0 18px;
   background-color: rgb(255, 255, 255);
-  display: none;
+  max-height: 0;
+  /* display: none; */
   overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 
 /* Styling for the Emojis */
