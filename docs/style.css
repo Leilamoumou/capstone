@@ -1,4 +1,5 @@
-/*  Homepage CSS, will be kept simple until UI design is implemented/*/
+/*  Homepage CSS along with other pages*/
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap');
 
 body {
   font-family: 'Inria Sans';
@@ -145,4 +146,21 @@ body {
   height: 24px;
   display: block;
   object-fit: contain;
+}
+/* Emergency button styling */
+.btn-emergency {
+  background-color: #f97316;  
+  color: white;
+  border: 3px solid #1e3a5f;  
+  padding: 12px 24px;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-emergency:hover {
+  background-color: #ea6c0a;
+  color: white;
 }
