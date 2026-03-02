@@ -24,6 +24,10 @@ jobs:
         run: |
           sed -i "s|%%API_KEY%%|${{ secrets.API_KEY }}|g" docs/Login/login.html
           sed -i "s|%%AUTH_DOMAIN%%|${{ secrets.AUTH_DOMAIN }}|g" docs/Login/login.html
+          sed -i "s|%%API_KEY%%|${{ secrets.API_KEY }}|g" docs/auth-state.js
+          sed -i "s|%%AUTH_DOMAIN%%|${{ secrets.AUTH_DOMAIN }}|g" docs/auth-state.js
+          sed -i "s|%%API_KEY%%|"${{ secrets.API_KEY }}|g" docs/Login/Customer-dashboard/customer-dashboard.html
+          sed -i "s|%%API_KEY%%|"${{ secrets.AUTH_DOMAIN }}|g" docs/Login/Customer-dashboard/customer-dashboard.html
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

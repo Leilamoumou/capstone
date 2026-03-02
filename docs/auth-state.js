@@ -15,15 +15,14 @@ import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/
 import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js';
 
 const firebaseConfig = {
-  apiKey:     "%%API_KEY%%",
+  apiKey: "%%API_KEY%%",
   authDomain: "%%AUTH_DOMAIN%%",
-  projectId:  "flowfix-65fd1",
-  appId:      "1:878384279716:web:041715c6ae2aa120b23631"
+  projectId: "flowfix-65fd1",
+  appId: "1:878384279716:web:041715c6ae2aa120b23631"
 };
 
-const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db   = getFirestore(app);
+const db = getFirestore(app);
 
 onAuthStateChanged(auth, async (user) => {
   const loginLink = document.querySelector('a[href*="login.html"]');
@@ -34,8 +33,8 @@ onAuthStateChanged(auth, async (user) => {
     const role = snap.exists() ? snap.data().role : "customer";
     loginLink.textContent = "Profile";
     loginLink.href = role === "plumber"
-      ? "../Dashboards/plumber-dashboard.html"
-      : "../Dashboards/customer-dashboard.html";
+  ? "../Plumber-Dashboard/plumber-dashboard.html"
+  : "../Customer-Dashboard/customer-dashboard.html";
   } else {
     loginLink.textContent = "Login";
     loginLink.href = "login.html";
