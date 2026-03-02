@@ -66,6 +66,17 @@ h1 {
   display: block;
 }
 
+.btn.theme-toggle {
+  background:none;
+  border:none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 15px;
+  height: 20px;
+}
+
 .btn.theme-toggle:hover {
   transform: scale(1.02);
   transition: transform 0.2s ease;
