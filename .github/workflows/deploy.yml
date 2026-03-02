@@ -28,7 +28,7 @@ jobs:
           sed -i "s|%%API_KEY%%|${{ secrets.API_KEY }}|g" docs/auth-state.js
           sed -i "s|%%AUTH_DOMAIN%%|${{ secrets.AUTH_DOMAIN }}|g" docs/auth-state.js
           sed -i "s|%%API_KEY%%|${{ secrets.API_KEY }}|g" docs/Customer-Dashboard/customer-dashboard.html
-          sed -i "s|%%UTH_DOMAIN%%|${{ secrets.AUTH_DOMAIN }}|g" docs/Customer-Dashboard/customer-dashboard.html
+          sed -i "s|%%AUTH_DOMAIN%%|${{ secrets.AUTH_DOMAIN }}|g" docs/Customer-Dashboard/customer-dashboard.html
           sed -i "s|%%API_KEY%%|${{ secrets.API_KEY }}|g" docs/Plumber-Dashboard/plumber-dashboard.html
           sed -i "s|%%AUTH_DOMAIN%%|${{ secrets.AUTH_DOMAIN }}|g" docs/Plumber-Dashboard/plumber-dashboard.html
     
