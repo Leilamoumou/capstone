@@ -10,8 +10,23 @@ body {
     margin: 0;
 }
 
+/* Navigation Bar background color */
+.main-header {
+    background-color: white;
+}
+
+.main-nav .btn,
+.main-nav a {
+    color:black;
+}
+
 h1 {
     font-family: 'Inria Sans',sans-serif;
+    color:black;
+}
+
+.logo h1 {
+    color: black;
 }
 
 .centered-text {
