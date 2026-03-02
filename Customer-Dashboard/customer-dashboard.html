@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FlowFix - Dashboard</title>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <div class="logo"><h1><a href="/docs/index.html">Flowfix</a></h1></div>
+        <nav class="main-nav">
+          <a href="../Login/login.html" id="nav-login" class="btn">Login</a>
+          <a href="../GEN-Maintenance-Check/Maintenance.html">General Maintenance Check</a>
+          <a href="../Pricing/pricing.html">Pricing</a>
+          <a href="../Location/Location.html">Location</a>
+          <a href="../FAQ/FAQ.html">FAQ</a>
+          <a href="#contact" class="btn cta-nav">Contact</a>
+          <a href="#Emergency-Plumbing" class="btn btn-emergency">Emergency Help</a>
+          <button class="btn theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+            <img src="../../dark-mode.png" id="themeIcon" alt="Dark Mode Icon" width="30" height="30">
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="dashboard-section">
+    <div class="dashboard-card">
+
+      <!-- Customer profile View: -->
+      <div class="dashboard-profile">
+        <h2>Welcome back, <span id="user-email"></span></h2>
+        <p class="role-badge">Customer</p>
+      </div>
+
+      <!-- Book a Plumber  -->
+      <div class="dashboard-block">
+        <h3>Book a Plumber</h3>
+        <div id="book-message"></div>
+        <form id="book-form">
+          <label for="issue">Describe your issue as well as its location in your home so that we can properly assist you.</label>
+          <textarea id="issue" rows="4" placeholder="e.g. pi" required></textarea>
+          <button type="submit" class="btn-primary">Submit Request</button>
+        </form>
+      </div>
+
+      <!-- Requests View for customers-->
+      <div class="dashboard-block">
+        <h3>Your Requests</h3>
+        <div id="requests-list"><p>Loading...</p></div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="../../script.js"></script>
+  <script type="module">
+    // imports & logic  TODO @Leilamoumou
+    //Credentials & login to be validated, as well as auth
+
+    //imports & credentialss
+import { getApps, initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js';
+import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, collection, addDoc, query, where, orderBy, getDocs } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js';
+
+const firebaseConfig = {
+  apiKey:    "AIzaSyCEeLF_HRy9s4UC_Har6OnzUjJj3Ig4cEw",
+  authDomain:"flowfix-65fd1.firebaseapp.com",
+  projectId: "flowfix-65fd1",
+  appId:     "1:878384279716:web:041715c6ae2aa120b23631"
+};
+
+const app  = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getFirestore(app);
+
+
+/*AUTH guard:
+Ensure those not signed in || not a user 
+get redirected to the login page. :
+*/
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    window.location.href = "../Login/login.html";
+    return;
+  }
+  // ROLECHECK : Plumbers cannot access customer dashboard
+  // redirection to occur.:
+const snap = await getDoc(doc(db, "users", user.uid));
+  if (snap.exists() && snap.data().role === "plumber") {
+    window.location.href = "../Plumber-Dashboard/plumber-dashboard.html";
+    return;
+  }
+  //Populate profile and load requests:
+    document.getElementById("user-email").textContent = user.email;
+
+      loadRequests(user.uid);
+
+//Job booking form submission
+document.getElementById("book-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const issue = document.getElementById("issue").value.trim();
+    const msgEl = document.getElementById("book-message");
+
+    try {
+      await addDoc(collection(db, "requests"), {
+        customerEmail: user.email,
+        customerUID:   user.uid,
+        issueDescription: issue,
+        status:        "open",
+        createdAt:     new Date()
+      });
+      //@Leilamoumou might reword this message?
+      msgEl.textContent = "Request submitted successfully. A status update will be posted shortly on your dashboard.";
+      msgEl.className = "login-message success";
+      document.getElementById("issue").value = "";
+      loadRequests(user.uid); // refresh list of requests to update
+    } catch (err) {
+      msgEl.textContent = "Failed to submit request. Please try to fill our form again.";
+      msgEl.className = "login-message error";
+    }
+  });
+});
+
+async function loadRequests(uid) {
+  const listEl = document.getElementById("requests-list");
+  try {
+    const q = query(
+      collection(db, "requests"),
+      where("customerUID", "==", uid),
+      orderBy("createdAt", "desc")
+    );
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+      listEl.innerHTML = "<p>No requests to fix any flows yet.</p>";
+      return;
+    }
+
+    listEl.innerHTML = snapshot.docs.map(doc => {
+      const d = doc.data();
+      return `
+        <div class="request-card">
+          <p><strong>Issue:</strong> ${d.issueDescription}</p>
+          <p><strong>Status:</strong> <span class="status-${d.status}">${d.status}</span></p>
+          <p class="request-date">${d.createdAt?.toDate().toLocaleDateString()}</p>
+        </div>
+      `;
+    }).join("");
+  } catch (err) {
+    listEl.innerHTML = "<p>Failed to load requests.</p>";
+  }
+}
+  </script>
+</body>
+</html>
