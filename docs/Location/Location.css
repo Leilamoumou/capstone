@@ -98,11 +98,16 @@ h1 {
     padding-right: 10px;
 }
 
+.dividerHQ span {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 /* Removes stray margin color in light mode */
-.dividerHQ {
+/* .dividerHQ {
     margin-top: -10px;
     margin-bottom: -10px;
-}
+} */
 
 /* Footer Styles */
 .footer {
@@ -199,22 +204,31 @@ h1 {
 
 /* Styling for Divider in dark mode */
 [data-theme="dark"] .divider {
-    background-color: #1e3a5f;
-    color: white;
-    text-shadow: none;
+    background-color: #1e3a5f !important;
+    color: white !important;
+    text-shadow: none !important;
 }
 
 [data-theme="dark"] .divider::before,
 [data-theme="dark"] .divider::after {
-    background-color: #1e3a5f;
+    background-color: #1e3a5f !important;
+}
+
+[data-theme="dark"] .dividerHQ::before,
+[data-theme="dark"] .dividerHQ::after {
+    background-color: #1e3a5f !important;
 }
 
 /* Styling for DividerHQ in dark mode */
 [data-theme="dark"] .dividerHQ {
-    background-color: #1e3a5f;
-    color: white;
-    text-shadow: none;
+    background-color: #1e3a5f !important;
+    color: white !important;
+    text-shadow: none !important;
 }
+
+
+/* TO DO - Styling for Footer in dark mode */
+
 
 /* The nav buttons are hidden on mobile by default */
 @media (max-width: 768px) {
