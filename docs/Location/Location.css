@@ -200,6 +200,18 @@ h1 {
     background-color: #ffffff;
 }
 
+/* Styling for Divider in dark mode */
+[data-theme="dark"] .divider {
+    background-color: #1e3a5f;
+    color: white;
+    text-shadow: none;
+}
+
+[data-theme="dark"] .divider::before,
+[data-theme="dark"] .divider::after {
+    background-color: #1e3a5f;
+}
+
 /* The nav buttons are hidden on mobile by default */
 @media (max-width: 768px) {
     .main-nav {
