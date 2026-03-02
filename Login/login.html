@@ -58,7 +58,10 @@
             </label>
             <a href="#" id="forgot-link">Forgot password?</a>
           </div>
-
+          <div class="role-select" id="role-select">
+        <label><input type="radio" name="role" value="customer" checked> I'm a user who would like to be connected with plumbers for plumbing assistance.</label>
+        <label><input type="radio" name="role" value="plumber"> I'm a plumber who would like to be connected with new clients for my work.</label>
+</div>
           <button type="submit" class="btn-primary" id="submit-btn">Log in</button>
         </form>
 
@@ -138,10 +141,7 @@ forgotLink.addEventListener("click", async (e) => {
           showMessage(friendlyError(error.code), "error");
         }
       });
-      <div class="role-select" id="role-select">
-  <label><input type="radio" name="role" value="customer" checked> I'm a user who would like to be connected with plumbers for plumbing assistance.</label>
-  <label><input type="radio" name="role" value="plumber"> I'm a plumber who would like to be connected with new clients for my work.</label>
-</div>
+      
       //form submit functionality 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();

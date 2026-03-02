@@ -7,8 +7,10 @@ ENTAILS THE FOLLOWING:
         -else, if logged out, nav is kept as 'Login'
 
 */
+//fix attempt to minimize module bug issues for login.
+import { getApps, initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js';
+const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
 
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js';
 import { getAuth, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js';
 import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js';
 
