@@ -282,3 +282,13 @@ p {
   color: #1e3a5f !important;
   padding: 10px;
 }
+
+/* Dark Mode - Accordion Panels + Background */
+[data-theme="dark"] .accordion {
+  background-color: #2c4c75;
+  color:white;
+}
+
+[data-theme="dark"] .accordion:hover {
+  background-color: #3e6596;
+}
