@@ -44,11 +44,7 @@ body {
   text-decoration: none;
   color: #fff;
 }
-/*dark mode toggle */
-[data-theme="dark"] body {
-  background: #121212;
-  color: #f0f0f0;
-}
+
 [data-theme="dark"] .main-header {
   background:  #0f1f33;
 }
@@ -321,3 +317,9 @@ padding: 1.5rem;
   font-weight: bold;
 }
 .maintenance-section a.btn:hover { background: #ea6c0a; }
+
+/*dark mode toggle */
+[data-theme="dark"] body {
+  background: #121212 !important;
+  color: #f0f0f0 !important;
+}
