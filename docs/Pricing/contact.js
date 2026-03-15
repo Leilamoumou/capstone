@@ -1,4 +1,4 @@
-// @judykuang implemented JavaScript for Pricing Webpage
+// @judykuang implemented JavaScript for Contact Webpage
 
 //Dark Mode Toggle Function with Icon Swapping
 const themeToggle = document.getElementById("themeToggle");

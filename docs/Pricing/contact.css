@@ -29,6 +29,9 @@ body {
 .nav-links {
   display: flex;
   gap: 22px;
+  /* @judykuang added adjustments to nav links */
+  margin-left: auto;
+  margin-right: 30px;
 }
 
 .nav-links a {
@@ -235,4 +238,83 @@ input:focus, select:focus, textarea:focus {
   .nav { padding: 14px 20px; }
   .contact-layout { grid-template-columns: 1fr; }
   .two-col { grid-template-columns: 1fr; }
+}
+
+/* ---- @judykuang IMPLEMENTED STYLING OF PAGE ELEMENTS FOR DARK MODE TOGGLE ---- */
+[data-theme="dark"] body {
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .nav {
+  background-color: #1e3a5f;
+  border-bottom: 1px solid #334155;
+}
+
+[data-theme="dark"] .logo,
+[data-theme="dark"] .nav-links a {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .hero {
+  background: none !important;
+  background-color: #1e3a5f !important;
+  border-bottom: 1px solid #334155;
+  color: white;
+}
+
+[data-theme="dark"] .hero h1 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .hero p {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .card {
+  background-color: #1e3a5f;
+  color: #ffffff;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .card-subtitle,
+[data-theme="dark"] .info-label,
+[data-theme="dark"] .fineprint {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] input, 
+[data-theme="dark"] select, 
+[data-theme="dark"] textarea {
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #ffffff;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #64748b;
+}
+
+[data-theme="dark"] .info-card .info-row {
+  border-bottom: 1px solid #334155;
+}
+
+[data-theme="dark"] .info-value {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .emergency-strip {
+  background-color: #2d1b1b;
+  border-color: #ff8c00;
+}
+
+.btn.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
 }
