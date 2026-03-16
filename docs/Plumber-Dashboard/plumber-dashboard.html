@@ -122,6 +122,7 @@ async function loadOpenRequests() {
     });
 
   } catch (err) {
+      console.error("loadRequests error:", err); 
     listEl.innerHTML = "<p>Failed to load requests.</p>";
   }
 }
